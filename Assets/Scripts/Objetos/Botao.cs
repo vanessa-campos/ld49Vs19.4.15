@@ -14,19 +14,12 @@ public class Botao : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col)
     {
-       if(col.gameObject.tag=="pedra")
+       if(col.gameObject.tag=="Player")
        {
            ativo=true;
            anim.SetTrigger("Pre");
        } 
     }
 
-    void OnTriggerExit2D(Collider2D col)
-    {
-       if(col.gameObject.tag=="pedra")
-       {
-           ativo=false;
-           anim.SetTrigger("Normal");
-       } 
-    }
+    
 }
