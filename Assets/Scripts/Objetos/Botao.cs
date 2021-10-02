@@ -7,6 +7,11 @@ public class Botao : MonoBehaviour
     public bool ativo=false;
     public Animator anim;
 
+    void Start()
+    {
+       
+    }
+
     void OnTriggerEnter2D(Collider2D col)
     {
        if(col.gameObject.tag=="pedra")

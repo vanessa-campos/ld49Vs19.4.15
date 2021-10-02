@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: -6003289247487712882}
   - component: {fileID: -635613905474240773}
   - component: {fileID: 7582695650555432749}
-  - component: {fileID: 7780263344090003646}
   - component: {fileID: -1265700462837634169}
   m_Layer: 0
   m_Name: Botao
@@ -152,27 +151,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.25, y: 0.25345993}
   m_EdgeRadius: 0
---- !u!50 &7780263344090003646
-Rigidbody2D:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7475273181970847628}
-  m_BodyType: 0
-  m_Simulated: 1
-  m_UseFullKinematicContacts: 0
-  m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 0
-  m_Material: {fileID: 0}
-  m_Interpolate: 0
-  m_SleepingMode: 1
-  m_CollisionDetection: 0
-  m_Constraints: 4
 --- !u!95 &-1265700462837634169
 Animator:
   serializedVersion: 3
@@ -186,7 +164,7 @@ Animator:
   m_Controller: {fileID: 9100000, guid: a95b63c13f5bb4b4fb71a0172c0d6117, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
-  m_ApplyRootMotion: 0
+  m_ApplyRootMotion: 1
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
