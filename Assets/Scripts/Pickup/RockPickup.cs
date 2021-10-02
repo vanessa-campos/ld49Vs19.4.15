@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class RockPickup : MonoBehaviour
 {
+    enum NameObject
+    {
+        Rock0,
+        Rock1,
+    }
 
     [Header("Components")]
     [SerializeField]private PlayerController    playerController;
     [SerializeField]private Transform           transformSpawnPos;
     [SerializeField]private GameObject[]        gameObjectsRocks;
+    [SerializeField]private NameObject          nameObject;
 
     void Start()
     {
@@ -25,10 +31,18 @@ public class RockPickup : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
-            Instantiate(gameObjectsRocks[0], 
-            transformSpawnPos.transform.position, Quaternion.identity);
-            playerController.AddNewRock();
-            Destroy(gameObject, 0);
+            if(playerController.rocksResistancesEnd[0] && nameObject == NameObject.Rock0)
+            {
+                Instantiate(gameObjectsRocks[0], 
+                transformSpawnPos.transform.position, Quaternion.identity);
+                Destroy(gameObject, 0);
+            }else if(playerController.rocksResistancesEnd[1] && nameObject == NameObject.Rock1)
+            {
+                Instantiate(gameObjectsRocks[1], 
+                transformSpawnPos.transform.position, Quaternion.identity);
+                Destroy(gameObject, 0);
+            }
+
         }
     }
 }
