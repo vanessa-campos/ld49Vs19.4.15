@@ -29,7 +29,6 @@ public class CanvasPlayerController : MonoBehaviour
     {
         sliderResistance[0].value = playerController.rocksResistances[0];
         sliderResistance[1].value = playerController.rocksResistances[1];
-        sliderResistance[2].value = playerController.rocksResistances[2];
 
         for(int i = 0; i < playerController.rocksResistancesEnd.Length; i++)
         {

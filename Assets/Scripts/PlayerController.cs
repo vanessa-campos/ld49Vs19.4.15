@@ -40,11 +40,15 @@ public class PlayerController : MonoBehaviour
 
     void UpdateCheckResistance()
     {
+        //Controlador de resistencias que acabaram
+
         for(int i = 0; i < rocksResistancesEnd.Length; i++)
         {
             if(rocksResistances[i] <= 0)
             {
                 rocksResistancesEnd[i] = true;
+                Destroy(rocksGameObject[i].gameObject, 0);
+
             }else if(rocksResistances[i] >= 0)
             {
                 rocksResistancesEnd[i] = false;
@@ -52,8 +56,12 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+
     void UpdateResistance()
     {
+
+        //Controlador da resistencia da pedras
+
         if(axisHorizontal != 0)
         {
             if(rocksResistances[0] > 0)
@@ -64,36 +72,22 @@ public class PlayerController : MonoBehaviour
                 if(rocksResistances[1] > 0)
                 {
                     rocksResistances[1] -= speedReduceRocksResistances[1] * Time.deltaTime;
-                }else 
-                {
-                    if(rocksResistances[2] > 0)
-                    {
-                        rocksResistances[2] -= speedReduceRocksResistances[2] * Time.deltaTime;
-                    }
                 }
             }
         }else 
         {
-            if(rocksResistances[0] < 50 && rocksResistances[1] >= 50 && rocksResistances[2] >= 50 )
+            if(rocksResistances[0] < 50 && rocksResistances[1] >= 50)
             {
                 rocksResistances[0] += speedAddRocksResistances[0] * Time.deltaTime;
                 
             }
             
-            if(rocksResistances[1] < 50 && rocksResistances[2] >= 50)
+            if(rocksResistances[1] < 50 )
             {
                 rocksResistances[1] += speedAddRocksResistances[1] * Time.deltaTime;
                 
-            }
-                
-            if(rocksResistances[2] < 50)
-            {
-                rocksResistances[2] += speedAddRocksResistances[2] * Time.deltaTime;
-                
-            }
-                    
-                
-            }
+            }  
         }
     }
+}
 
