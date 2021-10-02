@@ -166,7 +166,6 @@ Transform:
   - {fileID: 1467431178}
   - {fileID: 1563587363}
   - {fileID: 1482779565}
-  - {fileID: 1977410761}
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2341,7 +2340,7 @@ GameObject:
   - component: {fileID: 1467431182}
   m_Layer: 0
   m_Name: Rock
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2356,7 +2355,8 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1977410761}
   m_Father: {fileID: 137306394}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2469,14 +2469,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb2: {fileID: 1467431180}
   rocksGameObject:
-  - {fileID: 1482779564}
-  - {fileID: 1563587362}
+  - {fileID: 0}
+  - {fileID: 0}
   rocksPickup:
-  - {fileID: 4367023187070170796, guid: 2fdfa5e51aa767c44bbe5dcbeb0fe25c, type: 3}
   - {fileID: 2587697429841448878, guid: 3b88ec176dfa42647879e4f6bb49d15d, type: 3}
+  - {fileID: 4367023187070170796, guid: 2fdfa5e51aa767c44bbe5dcbeb0fe25c, type: 3}
   transformSpawnPosition: {fileID: 1977410761}
   axisHorizontal: 0
   speedVelocity: 1
+  distanceSpawnRockPickup: 2
   rocksResistances:
   - 50
   - 50
@@ -2488,12 +2489,6 @@ MonoBehaviour:
   - 5
   rocksResistancesEnd: 0000
   applyOneTime: 0101
---- !u!1 &1482779564 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5029397941141491020, guid: 8c969975a7f8a7247bf4ad7464790276,
-    type: 3}
-  m_PrefabInstance: {fileID: 5029397939931358944}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1482779565 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5029397941141491021, guid: 8c969975a7f8a7247bf4ad7464790276,
@@ -2765,12 +2760,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ba41488d786013a4881715ede4cbb842, type: 3}
---- !u!1 &1563587362 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5622861588890485314, guid: 4c4feab96007edb4eb46a9b02270c81a,
-    type: 3}
-  m_PrefabInstance: {fileID: 5622861588004598112}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1563587363 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5622861588890485315, guid: 4c4feab96007edb4eb46a9b02270c81a,
@@ -3189,12 +3178,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1977410760}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.25, z: 0}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 1}
   m_Children: []
-  m_Father: {fileID: 137306394}
-  m_RootOrder: 3
+  m_Father: {fileID: 1467431178}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1978754937
 PrefabInstance:
@@ -4034,6 +4023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5029397941141491020, guid: 8c969975a7f8a7247bf4ad7464790276,
+        type: 3}
+      propertyPath: m_TagString
+      value: PedraController 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5029397941141491021, guid: 8c969975a7f8a7247bf4ad7464790276,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4094,6 +4088,16 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1467431182}
+    - target: {fileID: 5029397941141491025, guid: 8c969975a7f8a7247bf4ad7464790276,
+        type: 3}
+      propertyPath: StartOneTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5029397941141491025, guid: 8c969975a7f8a7247bf4ad7464790276,
+        type: 3}
+      propertyPath: nameObject
+      value: Rock0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8c969975a7f8a7247bf4ad7464790276, type: 3}
 --- !u!1001 &5622861588004598112
@@ -4107,6 +4111,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622861588890485314, guid: 4c4feab96007edb4eb46a9b02270c81a,
+        type: 3}
+      propertyPath: m_TagString
+      value: PedraController 1
       objectReference: {fileID: 0}
     - target: {fileID: 5622861588890485315, guid: 4c4feab96007edb4eb46a9b02270c81a,
         type: 3}
@@ -4168,6 +4177,16 @@ PrefabInstance:
       propertyPath: playerController
       value: 
       objectReference: {fileID: 1467431182}
+    - target: {fileID: 5622861588890485319, guid: 4c4feab96007edb4eb46a9b02270c81a,
+        type: 3}
+      propertyPath: StartOneTime
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5622861588890485319, guid: 4c4feab96007edb4eb46a9b02270c81a,
+        type: 3}
+      propertyPath: nameObject
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c4feab96007edb4eb46a9b02270c81a, type: 3}
 --- !u!1001 &7475273181177066046

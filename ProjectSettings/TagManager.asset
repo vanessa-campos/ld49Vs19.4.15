@@ -7,6 +7,9 @@ TagManager:
   - porta
   - fim
   - pedra
+  - PedraController 0
+  - PedraController 1
+  - Pickup
   layers:
   - Default
   - TransparentFX
