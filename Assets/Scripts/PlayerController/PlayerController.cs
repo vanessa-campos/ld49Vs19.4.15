@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
 
-
     [Header("Components")]
     [SerializeField]private Rigidbody2D     rb2;
-    [SerializeField]private GameObject[]    rocksGameObject;
+    [SerializeField]public  GameObject[]    rocksGameObject;
+    [SerializeField]private GameObject[]    rocksPickup;
+    [SerializeField]public  Transform       transformSpawnPosition;
     [Header("Atributtes Movimentation")]
     [SerializeField]private float           axisHorizontal;
     [SerializeField]private float           speedVelocity;
@@ -17,6 +18,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float[]         speedReduceRocksResistances;        
     [SerializeField]private float[]         speedAddRocksResistances;
     [SerializeField]public  bool []         rocksResistancesEnd;
+    [SerializeField]private bool []         applyOneTime;           
+
 
     void Start()
     {
@@ -38,6 +41,14 @@ public class PlayerController : MonoBehaviour
         rb2.velocity = new Vector2(axisHorizontal * speedVelocity, rb2.velocity.y);
     }
 
+    public void AddNewRock()
+    {
+        for(int i = 0; i < rocksResistancesEnd.Length; i++)
+        {
+            rocksResistancesEnd[i] = false;
+        }
+    }
+
     void UpdateCheckResistance()
     {
         //Controlador de resistencias que acabaram
@@ -47,9 +58,14 @@ public class PlayerController : MonoBehaviour
             if(rocksResistances[i] <= 0)
             {
                 rocksResistancesEnd[i] = true;
-                Destroy(rocksGameObject[i].gameObject, 0);
-
-            }else if(rocksResistances[i] >= 0)
+                if(applyOneTime[i])
+                {
+                    Destroy(rocksGameObject[i].gameObject, 0);
+                    Vector2 spawnRockPickup = new Vector2(transform.position.x + 5, transform.position.y);
+                    Instantiate(rocksPickup[i], spawnRockPickup, Quaternion.identity);
+                    applyOneTime[i] = false;
+                }
+            }else if(rocksResistances[i] >= 0 || !rocksResistancesEnd[i])
             {
                 rocksResistancesEnd[i] = false;
             }
@@ -76,18 +92,20 @@ public class PlayerController : MonoBehaviour
             }
         }else 
         {
-            if(rocksResistances[0] < 50 && rocksResistances[1] >= 50)
+            if(rocksResistances[0] < 50 && rocksResistances[1] >= 50 && !rocksResistancesEnd[0])
             {
                 rocksResistances[0] += speedAddRocksResistances[0] * Time.deltaTime;
                 
             }
             
-            if(rocksResistances[1] < 50 )
+            if(rocksResistances[1] < 50 && !rocksResistancesEnd[1])
             {
                 rocksResistances[1] += speedAddRocksResistances[1] * Time.deltaTime;
                 
             }  
         }
     }
+
+
 }
 
