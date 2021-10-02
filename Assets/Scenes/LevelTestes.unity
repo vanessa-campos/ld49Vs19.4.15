@@ -2475,8 +2475,10 @@ MonoBehaviour:
   - {fileID: 2587697429841448878, guid: 3b88ec176dfa42647879e4f6bb49d15d, type: 3}
   - {fileID: 4367023187070170796, guid: 2fdfa5e51aa767c44bbe5dcbeb0fe25c, type: 3}
   transformSpawnPosition: {fileID: 1977410761}
+  getKeyDownSpace: 0
   axisHorizontal: 0
   speedVelocity: 1
+  forceJump: 10
   distanceSpawnRockPickup: 2
   rocksResistances:
   - 50

@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField]public  GameObject[]    rocksGameObject;
     [SerializeField]private GameObject[]    rocksPickup;
     [SerializeField]public  Transform       transformSpawnPosition;
+    [Header("Inputs")]
+    [SerializeField]private bool            getKeyDownSpace;
     [Header("Atributtes Movimentation")]
     [SerializeField]private float           axisHorizontal;
     [SerializeField]private float           speedVelocity;
+    [SerializeField]private float           forceJump;
     [Header("Atributtes Resistance")]
     [SerializeField]private float           distanceSpawnRockPickup;
     [SerializeField]public  float[]         rocksResistances;    
@@ -20,6 +23,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]private float[]         speedAddRocksResistances;
     [SerializeField]public  bool []         rocksResistancesEnd;
     [SerializeField]public  bool []         applyOneTime;
+    
 
 
     void Start()
@@ -34,6 +38,7 @@ public class PlayerController : MonoBehaviour
         Movimentation();
         UpdateCheckResistance();
         UpdateResistance();
+        Inputs();
 
     }
 
@@ -42,13 +47,30 @@ public class PlayerController : MonoBehaviour
         // Movimentação na horizontal 
         axisHorizontal = Input.GetAxis("Horizontal");
         rb2.velocity = new Vector2(axisHorizontal * speedVelocity, rb2.velocity.y);
+
+        if(getKeyDownSpace && rb2.velocity.y <= 0)
+        {
+            rb2.AddForce(transform.up * forceJump, ForceMode2D.Impulse);
+        }
+
     }
 
+    void Inputs()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            getKeyDownSpace = true;
+        }else 
+        {
+            getKeyDownSpace = false;
+        }
+    }
 
 
     void UpdateCheckResistance()
     {
-        //Controlador de resistencias que acabaram
+        //Controlador de resistencias que acabaram e 
+        //spawnador da rocksPickup para recuperar a resistencia novamente 
 
         if(rocksResistances[0] <= 0 && !rocksResistancesEnd[0])
         {
